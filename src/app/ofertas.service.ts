@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http"
 import { Oferta } from "./shared/ofertas.model"
 import { Injectable } from "@angular/core"
+import { promise } from "protractor";
 @Injectable()
 export class OfertasService{
     
@@ -17,5 +18,13 @@ export class OfertasService{
         .get<Oferta[]>(`http://localhost:3000/ofertas?categoria=${categoria}`)
         .toPromise();
     }
+
+    public getOfertasPorId(id: number): Promise<Oferta> {
+      return this.http.get(`http://localhost:3000/ofertas?id=${id}`)
+        .toPromise()
+        .then((resposta: any) => {
+          return resposta.json()[0]; 
+        })
+  }
     
 }
