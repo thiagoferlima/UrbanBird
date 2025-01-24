@@ -36,6 +36,13 @@ public getComoUsarOfertaPorId(id: number): Promise<string> {
       return resposta[0].descricao
     });
 }
+public getOndeFicaOfertaPorId(id: number): Promise<string> {
+  return this.http.get<any[]>(`${URL_API}/onde-fica?id=${id}`)
+    .toPromise()
+    .then((resposta: any[]) => {
+      return resposta[0].descricao
+    });
+}
 
 
 
