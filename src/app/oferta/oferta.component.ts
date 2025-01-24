@@ -9,7 +9,6 @@ import { Oferta } from '../shared/ofertas.model';
   providers: [OfertasService]
 })
 export class OfertaComponent implements OnInit {
-  activeTab:string='como-usar'
   public oferta:Oferta
   constructor(
     private route: ActivatedRoute, 
@@ -24,8 +23,6 @@ export class OfertaComponent implements OnInit {
     })
 
   }
-  setActiveTab(tab: string): void {
-    this.activeTab = tab;
-  }
+
 
 }
