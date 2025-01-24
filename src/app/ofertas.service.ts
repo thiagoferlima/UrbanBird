@@ -6,31 +6,38 @@ import { URL_API } from "./app.api";
 
 @Injectable()
 export class OfertasService{
-
- // private url_api = 'http://localhost:3000/ofertas'
     
     constructor(private http: HttpClient) {}
 
     public getOfertas(): Promise<Oferta[]> {
       return this.http
-        .get<Oferta[]>(`${URL_API}?destaque=true`) // Adicione o tipo Oferta[]
+        .get<Oferta[]>(`${URL_API}/ofertas?destaque=true`) // Adicione o tipo Oferta[]
         .toPromise(); // Não precisa de then para resposta.json()
     }
   
     public getOfertasPorCategoria(categoria: string): Promise<Oferta[]> {
       return this.http
-        .get<Oferta[]>(`${URL_API}?categoria=${categoria}`)
+        .get<Oferta[]>(`${URL_API}/ofertas?categoria=${categoria}`)
         .toPromise();
     }
 
 public getOfertasPorId(id: number): Promise<Oferta> {
-  return this.http.get<Oferta[]>(`${URL_API}?id=${id}`)
+  return this.http.get<Oferta[]>(`${URL_API}/ofertas?id=${id}`)
     .toPromise()
     .then((resposta: Oferta[]) => {
       // Verifique se a resposta contém dados e se está retornando a oferta certa
       return resposta[0]; 
     });
 }
+public getComoUsarOfertaPorId(id: number): Promise<string> {
+  return this.http.get<any[]>(`${URL_API}/como-usar?id=${id}`)
+    .toPromise()
+    .then((resposta: any[]) => {
+      return resposta[0].descricao
+    });
+}
+
+
 
     
     
