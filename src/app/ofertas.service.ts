@@ -3,7 +3,8 @@ import { Oferta } from "./shared/ofertas.model"
 import { Injectable } from "@angular/core"
 import { promise } from "protractor";
 import { URL_API } from "./app.api";
-
+import { Observable } from "rxjs";
+import  "rxjs/add/operator/map";
 @Injectable()
 export class OfertasService{
     
@@ -44,7 +45,10 @@ public getOndeFicaOfertaPorId(id: number): Promise<string> {
     });
 }
 
-
+public pesquisaOfertas(termo:string): Observable<Oferta[]>{
+  return this.http.get(`${URL_API}/ofertas?descricao_oferta=${termo}`)
+  .map((resposta:any)=> resposta.json())
+}
 
     
     
