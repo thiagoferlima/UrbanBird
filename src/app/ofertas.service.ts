@@ -5,6 +5,7 @@ import { promise } from "protractor";
 import { URL_API } from "./app.api";
 import { Observable } from "rxjs";
 import  "rxjs/add/operator/map";
+import  "rxjs/add/operator/retry";
 @Injectable()
 export class OfertasService{
     
@@ -46,7 +47,8 @@ public getOndeFicaOfertaPorId(id: number): Promise<string> {
 }
 
 public pesquisaOfertas(termo: string): Observable<Oferta[]> {
-  return this.http.get<Oferta[]>(`${URL_API}/ofertas?descricao_oferta_like=${termo}`);
+  return this.http.get<Oferta[]>(`${URL_API}/ofertas?descricao_oferta_like=${termo}`)
+  .retry(10)
 }
 
 
