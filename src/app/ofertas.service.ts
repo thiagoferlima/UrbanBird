@@ -45,10 +45,10 @@ public getOndeFicaOfertaPorId(id: number): Promise<string> {
     });
 }
 
-public pesquisaOfertas(termo:string): Observable<Oferta[]>{
-  return this.http.get(`${URL_API}/ofertas?descricao_oferta=${termo}`)
-  .map((resposta:any)=> resposta.json())
+public pesquisaOfertas(termo: string): Observable<Oferta[]> {
+  return this.http.get<Oferta[]>(`${URL_API}/ofertas?descricao_oferta_like=${termo}`);
 }
+
 
     
     
