@@ -20,7 +20,6 @@ export class HomeComponent implements OnInit {
         console.log('Ofertas recebidas:', this.ofertas);
       })
       .catch((error: any) => {
-        console.error('Erro ao buscar ofertas:', error);
       });
   }
 }
