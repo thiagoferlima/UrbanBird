@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http"
+import { HttpClient, HttpResponse } from "@angular/common/http"
 import { Oferta } from "./shared/ofertas.model"
 import { Injectable } from "@angular/core"
 import { promise } from "protractor";
