@@ -3,11 +3,7 @@ import { OfertasService } from '../ofertas.service';
 import { Oferta } from '../shared/ofertas.model';
 import { Observable, Subject } from 'rxjs';
 import { NgLocaleLocalization } from '@angular/common';
-import 'rxjs/add/operator/switchMap'
-import 'rxjs/add/operator/debounceTime'
-import 'rxjs/add/observable/of'
-import 'rxjs/add/operator/distinctUntilChanged'
-import 'rxjs/add/operator/catch'
+import '../util/rxj.extensions.ts'
 
 @Component({
   selector: 'app-topo',
@@ -18,6 +14,7 @@ import 'rxjs/add/operator/catch'
 export class TopoComponent implements OnInit {
 
   public ofertas: Observable<Oferta[]>
+  public ofertas2: Oferta[]
   private subjectPesquisa:Subject<string> = new Subject<string>()
   constructor(private ofertaService:OfertasService) { }
 
@@ -36,7 +33,11 @@ export class TopoComponent implements OnInit {
       console.log(err)
       return Observable.of<Oferta[]>([])
     })
-    this.ofertas.subscribe((ofertas:Oferta[])=> console.log(ofertas))
+    this.ofertas.subscribe((ofertas:Oferta[])=> {
+      console.log(ofertas)
+      this.ofertas2 = ofertas
+    
+    })
   }
   public pesquisa(termoDaBusca: string):void{
     console.log('keyup caracter: ', termoDaBusca)
