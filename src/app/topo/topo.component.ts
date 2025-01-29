@@ -6,6 +6,8 @@ import { NgLocaleLocalization } from '@angular/common';
 import 'rxjs/add/operator/switchMap'
 import 'rxjs/add/operator/debounceTime'
 import 'rxjs/add/observable/of'
+import 'rxjs/add/operator/distinctUntilChanged'
+
 @Component({
   selector: 'app-topo',
   templateUrl: './topo.component.html',
@@ -21,6 +23,7 @@ export class TopoComponent implements OnInit {
   ngOnInit() {
     this.ofertas = this.subjectPesquisa
     .debounceTime(1000)
+    .distinctUntilChanged()
     .switchMap((termo:string)=> {
       console.log('Requisicao http para api: ', termo)
       if(termo.trim() === ''){
