@@ -5,6 +5,7 @@ import { Observable, Subject } from 'rxjs';
 import { NgLocaleLocalization } from '@angular/common';
 import 'rxjs/add/operator/switchMap'
 import 'rxjs/add/operator/debounceTime'
+import 'rxjs/add/observable/of'
 @Component({
   selector: 'app-topo',
   templateUrl: './topo.component.html',
@@ -22,7 +23,9 @@ export class TopoComponent implements OnInit {
     .debounceTime(1000)
     .switchMap((termo:string)=> {
       console.log('Requisicao http para api: ', termo)
-
+      if(termo.trim() === ''){
+        return Observable.of<Oferta[]>([])
+      }
       return this.ofertaService.pesquisaOfertas(termo)
     })
     this.ofertas.subscribe((ofertas:Oferta[])=> console.log(ofertas))
