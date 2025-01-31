@@ -27,29 +27,20 @@ export class OrdemCompraComponent implements OnInit {
 
   ngOnInit() {
   }
-  public atulizaEndereco(endereco:string): void{
-    this.endereco = endereco
-    //console.log(this.endereco)
-    this.complementoEstadoPrimitivo = false
-    if(this.endereco.length > 3){
-      this.enderecoValido = true
-    }else{
-      this.enderecoValido= false
-    }
+  public atualizaEndereco(endereco: string): void {
+    this.endereco = endereco; 
+    this.enderecoEstadoPrimitivo = false; 
+  
+   
+    this.enderecoValido = endereco.length > 3; 
   }
-  public atulizaNumero(numero:string):void{
+  public atualizaNumero(numero:string):void{
     this.numero = numero
-    //console.log(this.numero)
     this.numeroEstadoPrimitivo=false
 
-    if(this.numero.length> 0){
-      this.numeroValido = true
-    }else{
-      this.numeroValido = false
-    }
-
+    this.numeroValido = numero.length> 0;
   }
-  public atulizaComplemento(complemento: string): void{
+  public atualizaComplemento(complemento: string): void{
     this.complemento = complemento
    // console.log(this.complemento)
    this.complementoEstadoPrimitivo=false
