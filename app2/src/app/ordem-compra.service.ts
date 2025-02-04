@@ -6,7 +6,7 @@ import { URL_API } from "./app.api"
 @Injectable()
 export class OrdemCompraService{
     constructor(private http: Http){}
-    public efetivarCompra(pedido:Pedido): Observable<any>{
+    public efetivarCompra(pedido:Pedido): Observable<number>{
         let headers :  Headers = new Headers()
 
         headers.append('content-type', 'application/json')
@@ -18,6 +18,6 @@ export class OrdemCompraService{
 
 
         )
-        .map((resposta: Response) => console.log(resposta.json()))
+        .map((resposta: Response) => resposta.json().id)
     }
 }
