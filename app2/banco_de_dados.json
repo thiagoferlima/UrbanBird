@@ -276,6 +276,12 @@
       "complemento": "",
       "formaPagamento": "dinheiro",
       "id": 13
+    },
+    {
+      "endereco": "Rua matuto",
+      "numero": "23",
+      "complemento": "",
+      "id": 14
     }
   ]
 }
