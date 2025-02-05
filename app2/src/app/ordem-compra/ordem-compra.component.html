@@ -1,6 +1,6 @@
 <div class="container">
   <div class="ordem-compra">
-    <form novalidate>
+    <form novalidate #formulario="ngForm" (ngSubmit)="confirmarCompra()">
     
       <h5>Sua Compra</h5>
       <hr />
@@ -63,6 +63,10 @@
       <br />
 
 
+      <pre>Válido = {{ formulario.valid | json}}</pre>
+      <pre>inválido = {{ formulario.invalid | json}}</pre>
+      <pre>{{ formulario.value | json}}</pre>
+      
       <h5>Dados de entrega</h5>
       <hr />
 
@@ -71,11 +75,14 @@
         <div class="form-group col-md-6">
           <input 
             type="text" 
-            class="form-control is-invalid" 
+            class="form-control" 
             placeholder="Endereço" 
             autocomplete="off" 
-            minlength="5" 
+            name="endereco"
             required
+            minlength="3"
+            maxlength="120"
+            ngModel
           >
           <small class="form-text text-danger">Endereço inválido</small>
         </div>
@@ -83,11 +90,16 @@
         <div class="form-group col-md-2">
           <input 
             type="text" 
-            class="form-control is-valid" 
+            class="form-control " 
             placeholder="Número" 
             autocomplete="off" 
-            minlength="1"
+            name="numero"
             required
+            minlength="1"
+            maxlength="20"
+
+            ngModel
+            
           >
           <small class="form-text text-success">Ok</small>
         </div>
@@ -98,6 +110,9 @@
             class="form-control" 
             placeholder="Complemento" 
             autocomplete="off"
+            name="complemento"
+            ngModel
+            
           >
         </div>
 
@@ -111,7 +126,9 @@
           
         <div class="form-group col-md-3">
           <select 
-            class="form-control is-invalid"
+            class="form-control"
+            name="Formapagamento"
+            ngModel
           >
             <option value="">Selecione uma opção</option>
             <option value="dinheiro">Dinheiro</option>
@@ -123,7 +140,7 @@
 
       <hr />
       <button 
-        type="button" 
+        type="submit" 
         class="btn btn-primary btn-lg"
       >Cofirmar compra</button>
     </form>
