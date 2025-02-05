@@ -288,6 +288,13 @@
       "numero": "2",
       "complemento": "",
       "id": 15
+    },
+    {
+      "endereco": "Rua Verao",
+      "numero": "9",
+      "complemento": null,
+      "formaPagamento": "debito",
+      "id": 16
     }
   ]
 }
