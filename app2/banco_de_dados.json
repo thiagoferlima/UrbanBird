@@ -302,6 +302,25 @@
       "complemento": null,
       "formaPagamento": "debito",
       "id": 17
+    },
+    {
+      "endereco": "dfdkfnd",
+      "numero": "sdfsdf",
+      "complemento": "sddsds",
+      "formaPagamento": "debito",
+      "itens": [
+        {
+          "id": 1,
+          "img": {
+            "url": "/assets/ofertas/1/img1.jpg"
+          },
+          "titulo": "Super Burger",
+          "descricao_oferta": "Rodízio de Mini-hambúrger com opção de entrada.",
+          "valor": 29.9,
+          "quantidade": 7
+        }
+      ],
+      "id": 18
     }
   ]
 }
